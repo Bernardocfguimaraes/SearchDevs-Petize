@@ -1,9 +1,11 @@
+// src/app/page.tsx
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { Flex, Heading, Input, Button, Text, Box, VStack, Icon } from '@chakra-ui/react';
 import { Clock } from 'lucide-react';
+import { useTranslation } from 'react-i18next'; 
 
 export default function Home() {
   const [searchValue, setSearchValue] = useState('');
@@ -12,6 +14,7 @@ export default function Home() {
   
   const router = useRouter();
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const { t, i18n } = useTranslation(); 
 
   useEffect(() => {
     const saved = localStorage.getItem('@searchdevs:history');
@@ -58,8 +61,20 @@ export default function Home() {
     router.push(`/profile/${username}`);
   };
 
+  const toggleLanguage = () => {
+    const newLang = i18n.language === 'pt' ? 'en' : 'pt';
+    i18n.changeLanguage(newLang);
+  };
+
   return (
-    <Flex direction="column" align="center" justify="center" minH="100vh" bg="#FAFAFA" px={4}>
+    <Flex direction="column" align="center" justify="center" minH="100vh" bg="#FAFAFA" px={4} position="relative">
+      
+      <Flex position="absolute" top={4} right={4}>
+        <Button onClick={toggleLanguage} size="sm" variant="outline" colorScheme="purple">
+          {i18n.language === 'pt' ? 'EN' : 'PT'}
+        </Button>
+      </Flex>
+
       <Heading as="h1" fontSize="5xl" mb={10} color="#0056D2" fontWeight="medium">
         Search <Text as="span" color="#8C14FC">d_evs</Text>
       </Heading>
@@ -68,7 +83,7 @@ export default function Home() {
         
         <Box position="relative" w="100%" ref={wrapperRef}>
           <Input
-            placeholder="Search"
+            placeholder={t('header.searchPlaceholder')} 
             bg="white"
             size="lg"
             borderRadius="md"
@@ -125,7 +140,7 @@ export default function Home() {
           _active={{ bg: '#5a08a8' }}
           onClick={handleSearch}
         >
-          Search
+          {t('header.searchPlaceholder')}
         </Button>
       </Flex>
     </Flex>
