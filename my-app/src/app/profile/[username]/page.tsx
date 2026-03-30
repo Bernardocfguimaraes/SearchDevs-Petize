@@ -9,6 +9,7 @@ import { ProfileSidebar } from '@/components/ProfileSidebar';
 import { RepoList } from '@/components/RepoList';
 import { Box } from '@chakra-ui/react';
 import { Header } from '@/components/Header';
+import { ProfileSkeleton } from '@/components/ProfileSkeleton';
 
 export default function ProfilePage({ params }: { params: Promise<{ username: string }> }) {
   const resolvedParams = use(params);
@@ -43,8 +44,9 @@ export default function ProfilePage({ params }: { params: Promise<{ username: st
 
   if (loading) {
     return (
-      <Flex minH="100vh" align="center" justify="center" bg="#FAFAFA">
-        <Spinner size="xl" color="#8C14FC" />
+      <Flex minH="100vh" bg="#FAFAFA" direction="column">
+        <Header />
+        <ProfileSkeleton />
       </Flex>
     );
   }

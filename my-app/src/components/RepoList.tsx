@@ -17,7 +17,6 @@ export function RepoList({ username }: RepoListProps) {
   const [sort, setSort] = useState('updated');
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
-  
   const observerTarget = useRef<HTMLDivElement>(null);
 
 
