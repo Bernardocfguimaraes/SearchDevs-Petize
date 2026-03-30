@@ -8,6 +8,7 @@ import { GithubUser } from '@/schemas/github';
 import { ProfileSidebar } from '@/components/ProfileSidebar';
 import { RepoList } from '@/components/RepoList';
 import { Box } from '@chakra-ui/react';
+import { Header } from '@/components/Header';
 
 export default function ProfilePage({ params }: { params: Promise<{ username: string }> }) {
   const resolvedParams = use(params);
@@ -63,18 +64,14 @@ export default function ProfilePage({ params }: { params: Promise<{ username: st
 
   return (
     <Flex minH="100vh" bg="#FAFAFA" direction="column">
-      <Flex w="100%" p={4} bg="white" boxShadow="sm" mb={8} justify="center">
-        <Text fontWeight="bold" color="#0056D2" fontSize="xl" cursor="pointer" onClick={() => router.push('/')}>
-          Search <Text as="span" color="#8C14FC">d_evs</Text>
-        </Text>
-      </Flex>
+      
+      <Header/>
 
       <Flex w="100%" maxW="1200px" mx="auto" px={4} gap={8} direction={{ base: 'column', md: 'row' }} align="flex-start">
-        
+
         <ProfileSidebar user={user} />
 
-        {/* Lista de Repositórios com Scroll Infinito */}
-        <Box flex={1} w="100%">
+        <Box flex={1} w="100%" minW={0}>
           <RepoList username={user.login} />
         </Box>
 
