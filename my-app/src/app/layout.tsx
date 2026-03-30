@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body style={{ margin: 0, padding: 0, boxSizing: 'border-box' }}>
+      <body suppressHydrationWarning style={{ margin: 0, padding: 0, boxSizing: 'border-box' }}>
         <Providers>
           {children}
         </Providers>

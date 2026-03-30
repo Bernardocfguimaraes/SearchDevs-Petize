@@ -1,0 +1,26 @@
+{
+  "header": {
+    "searchPlaceholder": "Buscar"
+  },
+  "error": {
+    "userNotFound": "Não há usuários com esse nome",
+    "backButton": "Voltar para a busca"
+  },
+  "profile": {
+    "followers": "seguidores",
+    "following": "seguindo",
+    "contact": "Contato"
+  },
+  "repos": {
+    "title": "Repositórios",
+    "empty": "Nenhum repositório encontrado.",
+    "updatedAt": "Atualizado em"
+  },
+  "sort": {
+    "label": "Ordenar por:",
+    "updated": "Última atualização",
+    "created": "Data de criação",
+    "pushed": "Último commit",
+    "fullName": "Nome em ordem alfabética"
+  }
+}

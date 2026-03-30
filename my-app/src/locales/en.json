@@ -1,0 +1,26 @@
+{
+  "header": {
+    "searchPlaceholder": "Search"
+  },
+  "error": {
+    "userNotFound": "No users with this name",
+    "backButton": "Back to search"
+  },
+  "profile": {
+    "followers": "followers",
+    "following": "following",
+    "contact": "Contact"
+  },
+  "repos": {
+    "title": "Repositories",
+    "empty": "No repositories found.",
+    "updatedAt": "Updated on"
+  },
+  "sort": {
+    "label": "Sort by:",
+    "updated": "Last update",
+    "created": "Creation date",
+    "pushed": "Last commit",
+    "fullName": "Alphabetical order"
+  }
+}

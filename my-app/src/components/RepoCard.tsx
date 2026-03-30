@@ -1,13 +1,15 @@
 import { Box, Text, Link as ChakraLink, Flex, Icon } from '@chakra-ui/react';
 import { Star } from 'lucide-react';
 import { GithubRepo } from '../schemas/github';
+import { useTranslation } from 'react-i18next';
 
 interface RepoCardProps {
   repo: GithubRepo;
 }
 
 export function RepoCard({ repo }: RepoCardProps) {
-  const formattedDate = new Intl.DateTimeFormat('pt-BR').format(new Date(repo.updated_at));
+  const { t, i18n } = useTranslation();
+  const formattedDate = new Intl.DateTimeFormat(i18n.language === 'en' ? 'en-US' : 'pt-BR').format(new Date(repo.updated_at));
 
   return (
     <Box 
@@ -40,7 +42,7 @@ export function RepoCard({ repo }: RepoCardProps) {
           <Text>{repo.stargazers_count}</Text>
         </Flex>
         <Text>•</Text>
-        <Text>Atualizado em {formattedDate}</Text>
+        <Text>{t('repos.updatedAt')} {formattedDate}</Text>
       </Flex>
     </Box>
   );
