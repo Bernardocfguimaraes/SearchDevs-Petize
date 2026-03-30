@@ -6,6 +6,8 @@ import { useRouter } from 'next/navigation';
 import { getUserProfile } from '@/services/github';
 import { GithubUser } from '@/schemas/github';
 import { ProfileSidebar } from '@/components/ProfileSidebar';
+import { RepoList } from '@/components/RepoList';
+import { Box } from '@chakra-ui/react';
 
 export default function ProfilePage({ params }: { params: Promise<{ username: string }> }) {
   const resolvedParams = use(params);
@@ -70,15 +72,11 @@ export default function ProfilePage({ params }: { params: Promise<{ username: st
       <Flex w="100%" maxW="1200px" mx="auto" px={4} gap={8} direction={{ base: 'column', md: 'row' }} align="flex-start">
         
         <ProfileSidebar user={user} />
-        
-        <VStack flex={1} w="100%" bg="white" p={6} borderRadius="md" boxShadow="sm" align="stretch">
-          <Text fontSize="xl" fontWeight="bold" color="gray.800">
-            Repositórios
-          </Text>
-          <Text color="gray.500">
-            Aqui vai entrar a lista com scroll infinito em breve!
-          </Text>
-        </VStack>
+
+        {/* Lista de Repositórios com Scroll Infinito */}
+        <Box flex={1} w="100%">
+          <RepoList username={user.login} />
+        </Box>
 
       </Flex>
     </Flex>
