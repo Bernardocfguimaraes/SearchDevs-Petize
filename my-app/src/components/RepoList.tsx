@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useEffect, useState, useRef } from 'react';
@@ -18,7 +19,6 @@ export function RepoList({ username }: RepoListProps) {
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
   const observerTarget = useRef<HTMLDivElement>(null);
-
 
   useEffect(() => {
     let isMounted = true; 
@@ -78,10 +78,22 @@ export function RepoList({ username }: RepoListProps) {
   };
 
   return (
-    <Box w="100%" bg="white" p={6} borderRadius="md" boxShadow="sm" minW={0}>
-      <SortSelect value={sort} onChange={handleSortChange} />
+    <Box 
+      w="100%" 
+      bg="white" 
+      p={{ base: 4, md: 6 }} 
+      borderRadius="xl" 
+      border="1px solid" 
+      borderColor="purple.100" 
+      boxShadow="0 4px 20px rgba(140, 20, 252, 0.05)" 
+      minW={0}
+    >
+
+      <Flex justify="flex-end" mb={6}>
+        <SortSelect value={sort} onChange={handleSortChange} />
+      </Flex>
       
-      <VStack align="stretch" spacing={0} w="100%">
+      <VStack align="stretch" spacing={4} w="100%">
         {repos.map((repo) => (
           <RepoCard key={repo.id} repo={repo} />
         ))}
@@ -90,13 +102,13 @@ export function RepoList({ username }: RepoListProps) {
       <Box ref={observerTarget} w="100%" h="20px" mt={4} />
 
       {loading && (
-        <Flex justify="center" py={4}>
-          <Spinner color="#8C14FC" />
+        <Flex justify="center" py={6}>
+          <Spinner color="#8C14FC" size="lg" thickness="3px" />
         </Flex>
       )}
 
       {!loading && repos.length === 0 && (
-        <Text textAlign="center" color="gray.500" py={8}>
+        <Text textAlign="center" color="gray.500" py={10} fontSize="lg">
           Nenhum repositório encontrado.
         </Text>
       )}
