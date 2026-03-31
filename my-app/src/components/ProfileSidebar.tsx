@@ -1,5 +1,5 @@
 import { Flex, Box, Text, Button, VStack, HStack, Icon, Divider, Avatar } from '@chakra-ui/react';
-import { Users, Building2, MapPin, Mail, Link as LinkIcon, Heart } from 'lucide-react'; // Importamos o Heart aqui
+import { Users, Building2, MapPin, Mail, Link as LinkIcon, Heart } from 'lucide-react'; 
 import { FaTwitter } from 'react-icons/fa'; 
 import { GithubUser } from '../schemas/github';
 import { useTranslation } from 'react-i18next';

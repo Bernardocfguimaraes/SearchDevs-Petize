@@ -1,7 +1,7 @@
 'use client';
 
 import { use, useEffect, useState } from 'react';
-import { Flex, Text, Spinner, Button, VStack } from '@chakra-ui/react';
+import { Flex, Text, Button } from '@chakra-ui/react';
 import { useRouter } from 'next/navigation';
 import { getUserProfile } from '@/services/github';
 import { GithubUser } from '@/schemas/github';
