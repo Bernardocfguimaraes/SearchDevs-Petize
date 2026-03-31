@@ -14,8 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Search d_evs | Petize",
-  description: "Desafio de Estágio React - Petize",
+  title: "Search d_evs",
+  description: "Encontre perfis e repositórios de desenvolvedores no GitHub de forma rápida e elegante.",
+  keywords: ["GitHub", "Desenvolvedores", "Repositórios", "Busca", "Portfólio"],
 };
 
 export default function RootLayout({
