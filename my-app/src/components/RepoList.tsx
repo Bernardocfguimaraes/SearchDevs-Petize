@@ -1,8 +1,9 @@
-
 'use client';
 
 import { useEffect, useState, useRef } from 'react';
-import { Box, VStack, Spinner, Text, Flex } from '@chakra-ui/react';
+import { Box, VStack, Spinner, Text, Flex, Heading, Icon } from '@chakra-ui/react';
+import { useTranslation } from 'react-i18next'; 
+import { BookMarked } from 'lucide-react'; 
 import { GithubRepo } from '../schemas/github';
 import { getUserRepos } from '../services/github';
 import { RepoCard } from './RepoCard';
@@ -13,6 +14,7 @@ interface RepoListProps {
 }
 
 export function RepoList({ username }: RepoListProps) {
+  const { t } = useTranslation(); 
   const [repos, setRepos] = useState<GithubRepo[]>([]);
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState('updated');
@@ -89,7 +91,34 @@ export function RepoList({ username }: RepoListProps) {
       minW={0}
     >
 
-      <Flex justify="flex-end" mb={6}>
+      <Flex 
+        justify="space-between" 
+        align="center" 
+        mb={6} 
+        wrap="wrap" 
+        gap={4}
+      >
+        <Flex align="center" gap={2.5}>
+          <Flex 
+            p={1.5} 
+            bg="purple.50" 
+            borderRadius="md" 
+            color="#8C14FC"
+          >
+            <Icon as={BookMarked} boxSize={5} />
+          </Flex>
+          <Heading 
+            as="h2" 
+            fontSize="lg" 
+            fontWeight="semibold" 
+            color="gray.800"
+            letterSpacing="-0.5px"
+          >
+
+            {t('repos.title', 'Repositórios')} 
+          </Heading>
+        </Flex>
+
         <SortSelect value={sort} onChange={handleSortChange} />
       </Flex>
       
@@ -109,7 +138,7 @@ export function RepoList({ username }: RepoListProps) {
 
       {!loading && repos.length === 0 && (
         <Text textAlign="center" color="gray.500" py={10} fontSize="lg">
-          Nenhum repositório encontrado.
+          {t('repos.empty', 'Nenhum repositório encontrado.')}
         </Text>
       )}
     </Box>

@@ -1,4 +1,3 @@
-// src/components/ProfileSidebar.tsx
 import { Flex, Box, Text, Button, VStack, HStack, Icon, Divider, Avatar } from '@chakra-ui/react';
 import { Users, Building2, MapPin, Mail, Link as LinkIcon, Heart } from 'lucide-react'; // Importamos o Heart aqui
 import { FaTwitter } from 'react-icons/fa'; 
@@ -14,7 +13,7 @@ export function ProfileSidebar({ user }: ProfileSidebarProps) {
 
   return (
     <Box 
-      w={{ base: '100%', md: '320px' }} // Aumentamos de 300px para 320px para evitar a quebra do nome
+      w={{ base: '100%', md: '320px' }} 
       bg="white" 
       p={6} 
       borderRadius="xl" 
@@ -22,6 +21,8 @@ export function ProfileSidebar({ user }: ProfileSidebarProps) {
       borderColor="purple.100" 
       boxShadow="0 4px 20px rgba(140, 20, 252, 0.05)" 
       h="fit-content" 
+      position={{ md: 'sticky' }} 
+      top={{ md: '24px' }}
     >
 
       <Flex direction="row" align="center" gap={4} mb={5}>
@@ -48,7 +49,6 @@ export function ProfileSidebar({ user }: ProfileSidebarProps) {
         </Text>
       )}
 
-      {/* Ajustamos para deixar os ícones simétricos separando Seguidores e Seguindo */}
       <HStack fontSize="sm" color="gray.600" mb={5} spacing={5}>
         <Flex align="center" gap={1.5}>
           <Icon as={Users} size={16} color="gray.400" />
