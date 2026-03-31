@@ -1,5 +1,6 @@
+// src/components/ProfileSidebar.tsx
 import { Flex, Box, Text, Button, VStack, HStack, Icon, Divider, Avatar } from '@chakra-ui/react';
-import { Users, Building2, MapPin, Mail, Link as LinkIcon } from 'lucide-react';
+import { Users, Building2, MapPin, Mail, Link as LinkIcon, Heart } from 'lucide-react'; // Importamos o Heart aqui
 import { FaTwitter } from 'react-icons/fa'; 
 import { GithubUser } from '../schemas/github';
 import { useTranslation } from 'react-i18next';
@@ -13,7 +14,7 @@ export function ProfileSidebar({ user }: ProfileSidebarProps) {
 
   return (
     <Box 
-      w={{ base: '100%', md: '300px' }} 
+      w={{ base: '100%', md: '320px' }} // Aumentamos de 300px para 320px para evitar a quebra do nome
       bg="white" 
       p={6} 
       borderRadius="xl" 
@@ -47,16 +48,21 @@ export function ProfileSidebar({ user }: ProfileSidebarProps) {
         </Text>
       )}
 
-      <HStack fontSize="sm" color="gray.600" mb={5} spacing={4}>
+      {/* Ajustamos para deixar os ícones simétricos separando Seguidores e Seguindo */}
+      <HStack fontSize="sm" color="gray.600" mb={5} spacing={5}>
         <Flex align="center" gap={1.5}>
           <Icon as={Users} size={16} color="gray.400" />
           <Text>
             <Text as="span" fontWeight="semibold" color="gray.900">{user.followers}</Text> {t('profile.followers')}
           </Text>
         </Flex>
-        <Text>
-          <Text as="span" fontWeight="semibold" color="gray.900">{user.following}</Text> {t('profile.following')}
-        </Text>
+        
+        <Flex align="center" gap={1.5}>
+          <Icon as={Heart} size={16} color="gray.400" />
+          <Text>
+            <Text as="span" fontWeight="semibold" color="gray.900">{user.following}</Text> {t('profile.following')}
+          </Text>
+        </Flex>
       </HStack>
 
       <Divider mb={5} borderColor="purple.100" />
